@@ -1,0 +1,89 @@
+{
+  "_comment": "AWS IAM Policy for AWS Client VPN Management Suite - Required permissions to execute the project",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ClientVPNManagement_CreateModifyDeleteVPNEndpoints",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateClientVpnEndpoint",
+        "ec2:DeleteClientVpnEndpoint",
+        "ec2:ModifyClientVpnEndpoint",
+        "ec2:DescribeClientVpnEndpoints",
+        "ec2:DescribeClientVpnConnections",
+        "ec2:DescribeClientVpnAuthorizationRules",
+        "ec2:DescribeClientVpnRoutes",
+        "ec2:DescribeClientVpnTargetNetworks",
+        "ec2:AssociateClientVpnTargetNetwork",
+        "ec2:DisassociateClientVpnTargetNetwork",
+        "ec2:AuthorizeClientVpnIngress",
+        "ec2:RevokeClientVpnIngress",
+        "ec2:CreateClientVpnRoute",
+        "ec2:DeleteClientVpnRoute",
+        "ec2:ExportClientVpnClientConfiguration",
+        "ec2:TerminateClientVpnConnections",
+        "ec2:ImportClientVpnClientCertificateRevocationList"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "VPCAndNetworkAccess_ReadVPCSubnetInfo",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeVpcs",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeSubnets"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CertificateManagement_ACMOperations",
+      "Effect": "Allow",
+      "Action": [
+        "acm:RequestCertificate",
+        "acm:ImportCertificate",
+        "acm:DeleteCertificate",
+        "acm:DescribeCertificate",
+        "acm:ListCertificates",
+        "acm:GetCertificate"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "Route53CertificateValidation_DNSRecords",
+      "Effect": "Allow",
+      "Action": [
+        "route53:GetChange",
+        "route53:ChangeResourceRecordSets",
+        "route53:ListHostedZones",
+        "route53:ListResourceRecordSets"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3CRLManagement_CertificateRevocationList",
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:HeadBucket",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::vpn-cert-revocation-list",
+        "arn:aws:s3:::vpn-cert-revocation-list/*"
+      ]
+    },
+    {
+      "Sid": "STSAccess_GetAccountInfo",
+      "Effect": "Allow",
+      "Action": [
+        "sts:GetCallerIdentity"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

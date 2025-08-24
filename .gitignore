@@ -1,0 +1,198 @@
+# AWS VPN Project - .gitignore
+# Protects sensitive certificates, keys, and configuration files
+
+# ===== CERTIFICATES & PRIVATE KEYS =====
+# Never commit any certificate or private key files
+certs/
+*.crt
+*.key
+*.pem
+*.p12
+*.pfx
+*.csr
+*.cer
+
+# ===== VPN USER CONFIGURATIONS =====
+# User-specific VPN configuration files contain embedded certificates
+vpn_user_config/
+*.ovpn
+
+# ===== DEPLOYMENT & RUNTIME FILES =====
+# Contains sensitive deployment information (VPC IDs, endpoint IDs, ARNs)
+vpn_deployment_info.json
+
+# ===== AWS CREDENTIALS & CONFIG =====
+# AWS credential files (if accidentally placed in project)
+.aws/
+aws-credentials
+credentials
+config
+*.credentials
+
+# ===== ENVIRONMENT & SECRETS =====
+# Environment files that might contain secrets
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# ===== PYTHON ENVIRONMENT =====
+# Python virtual environments and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# ===== IDE & EDITOR FILES =====
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===== OPERATING SYSTEM FILES =====
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===== LOGS & TEMPORARY FILES =====
+# Log files
+*.log
+logs/
+log/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+
+# ===== TESTING & COVERAGE =====
+# Testing
+.tox/
+.coverage
+.pytest_cache/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# ===== DOCUMENTATION BUILD =====
+# Sphinx documentation
+docs/_build/
+
+# ===== JUPYTER NOTEBOOKS =====
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# ===== TERRAFORM =====
+# Terraform files that might contain sensitive data
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+*.auto.tfvars
+# Terraform directory (contains state and sensitive data)
+terraform/
+
+# ===== DOCKER (if used) =====
+# Docker
+.dockerignore
+
+# ===== CUSTOM SENSITIVE FILES =====
+# Add any project-specific sensitive files here
+# Example:
+# my-secret-config.json
+# production-settings.py
+
+# ===== ALLOW SPECIFIC FILES =====
+# Use ! to explicitly include files that might be caught by patterns above
+# Example:
+# !example-config.json
+# !template.ovpn
